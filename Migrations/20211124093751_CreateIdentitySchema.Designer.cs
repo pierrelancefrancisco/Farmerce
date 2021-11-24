@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Farmerce.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211124093036_CreateIdentitySchema")]
+    [Migration("20211124093751_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
