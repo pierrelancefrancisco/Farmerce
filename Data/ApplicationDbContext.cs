@@ -9,11 +9,13 @@ using Farmerce.Models;
 
 namespace Farmerce.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
+        public DbSet<Products> Products { get; set; }
     }
 }
