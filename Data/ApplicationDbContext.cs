@@ -17,5 +17,7 @@ namespace Farmerce.Data
         }
 
         public DbSet<Products> Products { get; set; }
+
+        public DbSet<Farmerce.Models.Contact> Contact { get; set; }
     }
 }
