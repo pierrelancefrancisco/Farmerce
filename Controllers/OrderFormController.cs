@@ -18,7 +18,30 @@ namespace Farmerce.Controllers
         {
             _context = context;
         }
-
+        public IActionResult Index()
+        {
+            var list = _context.OrderForm.ToList();
+            return View(list);
+        }
+        public IActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(OrderForm record)
+        {
+            int i = 1;
+            var order = new OrderForm();
+            order.itemBuy = record.itemBuy;
+            order.quantity = record.quantity;
+            order.fullName = record.fullName;
+            order.emailAddress = record.emailAddress;
+            order.phoneNumber = record.phoneNumber;
+            order.Type = (processed)i;
+            _context.OrderForm.Add(order);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
         public IActionResult OrderForm()
         {
             return View();
