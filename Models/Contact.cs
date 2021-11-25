@@ -10,8 +10,9 @@ namespace Farmerce.Models
     {
         [Key]
         public int id { get; set; }
-
+     
         [Required(ErrorMessage = "Requried field.")]
+        [Display(Name = "Name")]
         public string Sender { get; set; }
 
         [Required(ErrorMessage = "Required field.")]
