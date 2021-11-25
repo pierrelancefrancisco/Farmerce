@@ -32,5 +32,13 @@ namespace Farmerce.Models
         [Display(Name = "Phone Number")]
         [Required(ErrorMessage = "Required")]
         public int phoneNumber { get; set; }
+
+        public processed Type { get; set; }
+    }
+    public enum processed
+    {
+        Pending = 1,
+        Success = 2,
+        Failed = 3
     }
 }

@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 using Farmerce.Models;
 using System.Net;
 using System.Net.Mail;
+using Farmerce.Data;
 
 namespace Farmerce.Controllers
 {
     public class OrderFormController : Controller
     {
-        private readonly ILogger<OrderFormController> _logger;
-
-        public OrderFormController(ILogger<OrderFormController> logger)
+        private readonly ApplicationDbContext _context;
+        public OrderFormController(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult OrderForm()
