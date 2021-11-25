@@ -30,7 +30,6 @@ namespace Farmerce.Controllers
             bool isAuthenitcate = false;
             if (email == "Testing@gmail.com" && password == "A")
             {
-                identity = new ClaimsIdentity(new [])
             }
             return View();
         }
