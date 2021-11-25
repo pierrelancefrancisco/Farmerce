@@ -10,7 +10,7 @@ using System.Security.Claims;
 namespace Farmerce.Controllers
 {
     public class AdminController : Controller
-    {
+    {/*
         public IActionResult Index()
         {
             return View();
@@ -33,6 +33,6 @@ namespace Farmerce.Controllers
                 identity = new ClaimsIdentity(new [])
             }
             return View();
-        }
+        }*/
     }
 }
