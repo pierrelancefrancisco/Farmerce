@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 using System.Net;
 using System.Net.Mail;
@@ -14,11 +15,18 @@ namespace Farmerce.Controllers
 {
     public class HomeController : Controller
     {
+        SqlCommand com = new SqlCommand();
+        SqlDataReader dr;
+        SqlConnection con = new SqlConnection();
+
+        List<ProductSummary> products = new List<ProductSummary>();
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            con.ConnectionString= Farmerce.Properties.Resources.ConnectionString;
         }
 
         public IActionResult Contact()
@@ -53,12 +61,47 @@ namespace Farmerce.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            FetchData();
+            return View(products);
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        private void FetchData()
+        {
+            if (products.Count > 0)
+            {
+                products.Clear();
+            }
+
+            try
+            {
+                con.Open();
+                com.Connection = con;
+                com.CommandText = "SELECT TOP (1000) [ProductID],[ProductName],[ProductPrice],[ProductMeasurement],[StocksLeft],[Category] FROM [FarmerceDB].[dbo].[Products]";
+
+                dr = com.ExecuteReader();
+                while (dr.Read())
+                {
+                    products.Add(new ProductSummary() {ProductID = dr["ProductID"].ToString()
+                    ,ProductName = dr["ProductName"].ToString()
+                    ,ProductPrice = dr["ProductPrice"].ToString()
+                    ,ProductMeasurement = dr["ProductMeasurement"].ToString()
+                    ,StocksLeft = dr["StocksLeft"].ToString()
+                    ,Category = dr["Category"].ToString()
+
+                    });
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
