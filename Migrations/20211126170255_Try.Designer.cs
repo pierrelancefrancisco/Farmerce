@@ -4,14 +4,16 @@ using Farmerce.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Farmerce.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211126170255_Try")]
+    partial class Try
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,21 +92,6 @@ namespace Farmerce.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Farmerce.Models.Category", b =>
-                {
-                    b.Property<int>("CatID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CatName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CatID");
-
-                    b.ToTable("Category");
-                });
-
             modelBuilder.Entity("Farmerce.Models.Contact", b =>
                 {
                     b.Property<int>("id")
@@ -177,14 +164,8 @@ namespace Farmerce.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CatId")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
-
-                    b.Property<int?>("CategoryCatID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("ProductMeasurement")
                         .HasColumnType("decimal(18,2)");
@@ -200,8 +181,6 @@ namespace Farmerce.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ProductID");
-
-                    b.HasIndex("CategoryCatID");
 
                     b.ToTable("Products");
                 });
@@ -339,15 +318,6 @@ namespace Farmerce.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Farmerce.Models.Products", b =>
-                {
-                    b.HasOne("Farmerce.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryCatID");
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

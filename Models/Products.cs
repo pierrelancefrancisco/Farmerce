@@ -27,15 +27,22 @@ namespace Farmerce.Models
         [Display(Name = "Stocks Left")]
         public int StocksLeft { get; set; }
 
-        [Required(ErrorMessage = "This is required")]
-        [Display(Name = "Product Category")]
-        public ProductCategory Category { get; set; }
+        [Display(Name = "Image")]
+        public string ImagePath { get; set; }
+
+        [Required(ErrorMessage = "Required.")]
+        public virtual Category Category { get; set; }
+
+        public int? CatID { get; set; }
     }
-    public enum ProductCategory
+
+    public class Category
     {
-        Fruits = 1,
-        Vegetables = 2,
-        Seeds = 3
+        [Key]
+        public int CatID { get; set; }
+
+        public string CatName { get; set; }
 
     }
+   
 }

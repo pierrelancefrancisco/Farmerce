@@ -27,21 +27,6 @@ namespace Farmerce.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult Add(OrderForm record)
-        {
-            int i = 1;
-            var order = new OrderForm();
-            order.itemBuy = record.itemBuy;
-            order.quantity = record.quantity;
-            order.fullName = record.fullName;
-            order.emailAddress = record.emailAddress;
-            order.phoneNumber = record.phoneNumber;
-            order.Type = (processed)i;
-            _context.OrderForm.Add(order);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
         public IActionResult OrderForm()
         {
             return View();
@@ -58,7 +43,7 @@ namespace Farmerce.Controllers
             mail.Subject = "Inquiry from " + record.fullName + " (" + "Item purchased" + ")";
             string message = "Hello," + record.fullName + "<br/><br/>"
                 + "Thank you for purchasing. Here are the items that you have purchased <br/><br/>"
-                + "Items: " + record.itemBuy + "<br/><br/>" + "Item is being processed Thank you.";
+                + "Items: " + record.itemBuy + "<br/><br/>" + "Quantity:" + record.quantity + "<br/><br/>" + "Item is being processed Thank you.";
             mail.Body = message;
             mail.IsBodyHtml = true;
 
@@ -69,7 +54,64 @@ namespace Farmerce.Controllers
             };
             smtp.Send(mail);
             ViewBag.Message = "Submitted.";
+            int i = 1;
+            var order = new OrderForm();
+            order.itemBuy = record.itemBuy;
+            order.quantity = record.quantity;
+            order.fullName = record.fullName;
+            order.emailAddress = record.emailAddress;
+            order.phoneNumber = record.phoneNumber;
+            order.Type = (processed)i;
+            _context.OrderForm.Add(order);
+            _context.SaveChanges();
             return View();
+        }
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var Order = _context.OrderForm.Where(i => i.Id == id).SingleOrDefault();
+            if (Order == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(Order);
+        }
+        [HttpPost]
+        public IActionResult Edit(int? id, OrderForm record)
+        {
+            var order = _context.OrderForm.Where(i => i.Id == id).SingleOrDefault();
+            order.itemBuy = record.itemBuy;
+            order.quantity = record.quantity;
+            order.fullName = record.fullName;
+            order.emailAddress = record.emailAddress;
+            order.phoneNumber = record.phoneNumber;
+            order.Type = record.Type;
+
+            _context.OrderForm.Update(order);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var order = _context.OrderForm.Where(i => i.Id == id).SingleOrDefault();
+            if (order == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            _context.OrderForm.Remove(order);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
