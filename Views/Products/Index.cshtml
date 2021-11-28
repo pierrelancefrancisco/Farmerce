@@ -25,7 +25,10 @@
                 @Html.DisplayNameFor(model => model.StocksLeft)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CatID)
             </th>
             <th></th>
         </tr>
@@ -46,10 +49,14 @@
                 @Html.DisplayFor(modelItem => item.StocksLeft)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category)
+                @Html.DisplayFor(modelItem => item.ImagePath)
             </td>
             <td>
-                <a asp-action="Update" asp-route-id="@item.ProductID">Update</a> |
+                @Html.DisplayFor(modelItem => item.CatID)
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id="@item.ProductID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
             </td>
         </tr>

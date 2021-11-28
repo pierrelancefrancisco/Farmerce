@@ -1,7 +1,9 @@
 ﻿@model Farmerce.Models.Products
+@inject Farmerce.Data.ApplicationDbContext _context;
 
 @{
     ViewData["Title"] = "Update";
+    var catList = _context.Category.ToList();
 }
 
 <h1>Update</h1>
@@ -34,9 +36,13 @@
                 <span asp-validation-for="StocksLeft" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <select asp-for="Category" class="form-control" asp-items="Html.GetEnumSelectList<ProductCategory>()"></select>
-                <span asp-validation-for="Category" class="text-danger"></span>
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" type="file" accept="image/*" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CatID" class="control-label"></label>
+                <select asp-for="CatID" class="form-control" asp-items="@(new SelectList(catList, "CatID", "CatName"))"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

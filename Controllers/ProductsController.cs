@@ -5,6 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Farmerce.Data;
 using Farmerce.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace Farmerce.Controllers
@@ -18,7 +21,7 @@ namespace Farmerce.Controllers
         }
         public IActionResult Index()
         {
-            var list = _context.Products.ToList();
+            var list = _context.Products.Include(p => p.Category).ToList();
             return View(list);
         }
 
@@ -28,14 +31,36 @@ namespace Farmerce.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Products record)
+        public IActionResult Add(Products record, IFormFile ImagePath)
         {
-            var product = new Products();
-            product.ProductName = record.ProductName;
-            product.ProductPrice = record.ProductPrice;
-            product.ProductMeasurement = record.ProductMeasurement;
-            product.StocksLeft = record.StocksLeft;
-            product.Category = record.Category;
+           
+            var selectedCategory = _context.Category
+           .Where(c => c.CatID == record.CatID).SingleOrDefault();
+
+            var product = new Products()
+            {
+                ProductName = record.ProductName,
+                ProductPrice = record.ProductPrice,
+                ProductMeasurement = record.ProductMeasurement,
+                StocksLeft = record.StocksLeft,
+                Category = selectedCategory,
+                CatID = record.CatID
+
+             };
+
+            if(ImagePath != null)
+            {
+                if(ImagePath.Length > 0 )
+                {
+                    var filepath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/image/products", ImagePath.FileName);
+
+                        using (var stream = new FileStream(filepath, FileMode.Create))
+                    {
+                        ImagePath.CopyTo(stream);
+                    }
+                    product.ImagePath = ImagePath.FileName;
+                }
+            }
             _context.Products.Add(product);
             _context.SaveChanges();
             return RedirectToAction("Index");
@@ -60,14 +85,26 @@ namespace Farmerce.Controllers
         [HttpPost]
         public IActionResult Update(int? id, Products record)
         {
-            var products = _context.Products.Where(i => i.ProductID == id).SingleOrDefault();
-            products.ProductName = record.ProductName;
-            products.ProductPrice = record.ProductPrice;
-            products.ProductMeasurement = record.ProductMeasurement;
-            products.StocksLeft = record.StocksLeft;
-            products.Category = record.Category;
+            var selectedCategory = _context.Category
+           .Where(c => c.CatID == record.CatID).SingleOrDefault();
 
-            _context.Products.Update(products);
+            int cut = 0;
+            
+
+            var product = _context.Products.Where(p => p.ProductID == id).SingleOrDefault();
+
+            cut = product.StocksLeft;
+            cut = cut - 1;
+            product.ProductName = record.ProductName;
+            product.ProductPrice = record.ProductPrice;
+            product.ProductMeasurement = record.ProductMeasurement;
+            cut = record.StocksLeft;
+            product.Category = selectedCategory;
+            product.CatID = record.CatID;
+
+          
+
+            _context.Products.Update(product);
             _context.SaveChanges();
 
             return RedirectToAction("Index");

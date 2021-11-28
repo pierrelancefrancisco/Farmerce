@@ -21,5 +21,7 @@ namespace Farmerce.Data
         public DbSet<Farmerce.Models.Contact> Contact { get; set; }
 
         public DbSet<Farmerce.Models.OrderForm> OrderForm { get; set; }
+
+        public DbSet<Category> Category { get; set; }
     }
 }
