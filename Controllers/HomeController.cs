@@ -81,7 +81,7 @@ namespace Farmerce.Controllers
             {
                 con.Open();
                 com.Connection = con;
-                com.CommandText = "SELECT TOP (1000) [ProductID],[ProductName],[ProductPrice],[ProductMeasurement],[StocksLeft],[Category] FROM [FarmerceDB].[dbo].[Products]";
+                com.CommandText = "SELECT TOP (1000) [ProductID],[ProductName],[ProductPrice],[ProductMeasurement],[StocksLeft] FROM [FarmerceDB].[dbo].[Products]";
 
                 dr = com.ExecuteReader();
                 while (dr.Read())
@@ -91,7 +91,8 @@ namespace Farmerce.Controllers
                     ,ProductPrice = dr["ProductPrice"].ToString()
                     ,ProductMeasurement = dr["ProductMeasurement"].ToString()
                     ,StocksLeft = dr["StocksLeft"].ToString()
-                    ,Category = dr["Category"].ToString()
+                    //,CatId = dr["CatId"].ToString()
+                    //,ImagePath = dr["ImagePath"].ToString()
 
                     });
                 }

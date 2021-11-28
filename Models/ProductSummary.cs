@@ -12,6 +12,5 @@ namespace Farmerce.Models
         public string ProductPrice { get; set; }
         public string ProductMeasurement { get; set; }
         public string StocksLeft { get; set; }
-        public string Category { get; set; }
     }
 }

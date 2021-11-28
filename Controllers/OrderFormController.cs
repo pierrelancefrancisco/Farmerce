@@ -32,7 +32,7 @@ namespace Farmerce.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult OrderForm(OrderForm record)
+        public IActionResult OrderForm(OrderForm record, int? id)
         {
             MailMessage mail = new MailMessage()
             {
@@ -54,9 +54,11 @@ namespace Farmerce.Controllers
             };
             smtp.Send(mail);
             ViewBag.Message = "Submitted.";
+            var item = _context.Products.Where(p => p.ProductID == id).SingleOrDefault();
             int i = 1;
             var order = new OrderForm();
-            order.itemBuy = record.itemBuy;
+            order.itemBuy = item.ProductName;
+            //order.itemBuy = record.itemBuy; //og
             order.quantity = record.quantity;
             order.fullName = record.fullName;
             order.emailAddress = record.emailAddress;
@@ -84,6 +86,7 @@ namespace Farmerce.Controllers
         public IActionResult Edit(int? id, OrderForm record)
         {
             var order = _context.OrderForm.Where(i => i.Id == id).SingleOrDefault();
+            string a = "l";
             order.itemBuy = record.itemBuy;
             order.quantity = record.quantity;
             order.fullName = record.fullName;

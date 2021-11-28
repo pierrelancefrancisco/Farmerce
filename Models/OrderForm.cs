@@ -13,8 +13,7 @@ namespace Farmerce.Models
         public int Id { get; set; }
 
         [Display(Name = "What would you like to buy?")]
-        [Required(ErrorMessage = "Required")]
-        [DataType(DataType.MultilineText)]
+        //[Required(ErrorMessage = "Required")]
         public string itemBuy { get; set; }
 
         [Display(Name = "How many would you like to buy?")]
