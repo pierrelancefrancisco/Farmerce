@@ -48,6 +48,7 @@
                             <h5 class="card-title">@(item.ProductName)</h5>
                             <p class="card-text">@(item.Category.CatName)</p>
                             <p class="card-text">Php@(item.ProductPrice.ToString("N"))</p>
+                            <a asp-controller="OrderForm" asp-action="OrderForm" asp-route-id="@item.ProductID">Buy</a>
                         </div>
 
                     </div>
