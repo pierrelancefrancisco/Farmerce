@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 
 using System.Net;
 using System.Net.Mail;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Farmerce.Controllers
 {
@@ -29,6 +30,7 @@ namespace Farmerce.Controllers
             con.ConnectionString= Farmerce.Properties.Resources.ConnectionString;
         }
 
+        [Authorize]
         public IActionResult Contact()
         {
             return View();
@@ -100,7 +102,6 @@ namespace Farmerce.Controllers
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

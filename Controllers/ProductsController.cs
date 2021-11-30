@@ -8,7 +8,7 @@ using Farmerce.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace Farmerce.Controllers
 {
@@ -19,6 +19,8 @@ namespace Farmerce.Controllers
         {
             _context = context;
         }
+
+        [Authorize]
         public IActionResult Index()
         {
             var list = _context.Products.Include(p => p.Category).ToList();

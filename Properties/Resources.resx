@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConnectionString" xml:space="preserve">
-    <value>Data Source="LAPTOP-1C4DJB1S\MSSQLSERVER2019";Database=FarmerceDB;Integrated Security=true;MultipleActiveResultSets=true;</value>
+    <value>Data Source="DESKTOP-6D9VHG9\MYSSQLSERVER";Database=FarmerceDB;Integrated Security=true;MultipleActiveResultSets=true;</value>
     <comment>SQL Server Connection</comment>
   </data>
 </root>

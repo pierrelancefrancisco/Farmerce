@@ -8,6 +8,7 @@ using Farmerce.Models;
 using System.Net;
 using System.Net.Mail;
 using Farmerce.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Farmerce.Controllers
 {
@@ -18,6 +19,8 @@ namespace Farmerce.Controllers
         {
             _context = context;
         }
+
+        [Authorize]
         public IActionResult Index()
         {
             var list = _context.OrderForm.ToList();

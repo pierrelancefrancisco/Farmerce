@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Farmerce.Models;
 using Farmerce.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace Farmerce.Controllers
 {
@@ -18,6 +18,7 @@ namespace Farmerce.Controllers
             _context = context;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             var products = _context.Products.Include(p => p.Category).ToList();
