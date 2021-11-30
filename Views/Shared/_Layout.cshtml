@@ -21,20 +21,22 @@
                             Orders
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" asp-area="" asp-controller="Products" asp-action="Index">List of Products</a>
-                            <a class="dropdown-item" href="#">Buy a Product</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">View Cart</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Products" asp-action="Add">Add Products</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Store" asp-action="Index">Buy a Product</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Products" asp-action="Index">View Products</a>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="PrintableReport">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Store" asp-action="Index">Store</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="PrintableReport">Print</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="OrderForm" asp-action="Index">View Order List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">AboutUs</a>
                     </li>
                 </ul>
                 <partial name="_LoginPartial" />

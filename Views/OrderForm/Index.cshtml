@@ -3,60 +3,63 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<link href="~/css/StyleSheet.css" rel="stylesheet" />
+<br />
 <h1>List of customer's orders</h1>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Item Purchased
-            </th>
-            <th>
-                Quantity
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.emailAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.phoneNumber)
-            </th>
-            <th>
-                Delivery
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.itemBuy)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.fullName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.emailAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.phoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Type)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
+<body class="BG" id="font">
+    <table class="table">
+        <thead>
+            <tr id="font">
+                <th>
+                    Item Purchased
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emailAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phoneNumber)
+                </th>
+                <th>
+                    Delivery
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="font">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.itemBuy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emailAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" style="color:white" class="btn btn-primary">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" style="color:white" 
+                           onclick='return confirm("Are you sure?");' class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
