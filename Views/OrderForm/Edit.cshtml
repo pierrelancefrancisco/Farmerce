@@ -3,57 +3,58 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
+<link href="~/css/StyleSheet.css" rel="stylesheet" />
 <h1>Edit</h1>
 
 <h4>OrderForm</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="itemBuy" class="control-label"></label>
-                <textarea asp-for="itemBuy" class="form-control"></textarea>
-                <span asp-validation-for="itemBuy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="quantity" class="control-label"></label>
-                <input asp-for="quantity" class="form-control" />
-                <span asp-validation-for="quantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="fullName" class="control-label"></label>
-                <input asp-for="fullName" class="form-control" />
-                <span asp-validation-for="fullName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="emailAddress" class="control-label"></label>
-                <input asp-for="emailAddress" class="form-control" />
-                <span asp-validation-for="emailAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="phoneNumber" class="control-label"></label>
-                <input asp-for="phoneNumber" class="form-control" />
-                <span asp-validation-for="phoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<processed>()"></select>
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<body class="BG" id="font">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="itemBuy" class="control-label"></label>
+                    <textarea asp-for="itemBuy" class="form-control"></textarea>
+                    <span asp-validation-for="itemBuy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="quantity" class="control-label"></label>
+                    <input asp-for="quantity" class="form-control" />
+                    <span asp-validation-for="quantity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="fullName" class="control-label"></label>
+                    <input asp-for="fullName" class="form-control" />
+                    <span asp-validation-for="fullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="emailAddress" class="control-label"></label>
+                    <input asp-for="emailAddress" class="form-control" />
+                    <span asp-validation-for="emailAddress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="phoneNumber" class="control-label"></label>
+                    <input asp-for="phoneNumber" class="form-control" />
+                    <span asp-validation-for="phoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Type" class="control-label"></label>
+                    <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<processed>()"></select>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+    <div>
+        <a asp-action="Index" id="font">Back to List</a>
+    </div>
+</body>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
