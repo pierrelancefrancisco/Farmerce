@@ -20,7 +20,7 @@ namespace Farmerce.Controllers
             _context = context;
         }
 
-
+        [Authorize]
         public IActionResult Index()
         {
             var list = _context.OrderForm.ToList();
@@ -88,7 +88,6 @@ namespace Farmerce.Controllers
         public IActionResult Edit(int? id, OrderForm record)
         {
             var order = _context.OrderForm.Where(i => i.Id == id).SingleOrDefault();
-            string a = "l";
             order.itemBuy = record.itemBuy;
             order.quantity = record.quantity;
             order.fullName = record.fullName;
