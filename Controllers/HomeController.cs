@@ -63,6 +63,15 @@ namespace Farmerce.Controllers
 
         public IActionResult Index()
         {
+            return View();
+        }
+        public IActionResult PrintableReport()
+        {
+            FetchData();
+            return View(products);
+        }
+        public IActionResult HomePage()
+        {
             FetchData();
             return View(products);
         }
