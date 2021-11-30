@@ -46,6 +46,7 @@ namespace Farmerce.Controllers
             order.emailAddress = record.emailAddress;
             order.phoneNumber = record.phoneNumber;
             order.Type = (processed)i;
+            int productprice = item.ProductPrice;
             _context.OrderForm.Add(order);
             _context.SaveChanges();
             MailMessage mail = new MailMessage()
@@ -55,9 +56,13 @@ namespace Farmerce.Controllers
             mail.To.Add(new MailAddress(record.emailAddress));
 
             mail.Subject = " (" + "Item purchased" + ")";
-            string message = "Hello," + record.fullName + "<br/><br/>"
+            string message = "Hello, " + record.fullName + "<br/><br/>"
                 + "Thank you for purchasing. <br/><br/>Here are the items that you have purchased <br/><br/>"
-                + "Items: " + item.ProductName + "<br/><br/>" + "Quantity:" + record.quantity + "<br/><br/>" + "Item is being processed Thank you.";
+                + "Items: " + item.ProductName + "<br/><br/>" + "Quantity:" + record.quantity + "<br/><br/>" + "Total price: "
+                + productprice * record.quantity
+                + "<br/><br/>Item is being processed Thank you.<br/><br/>---------------------------------------------"
+                + "<br/><br/>This is an official receipt";
+                
             mail.Body = message;
             mail.IsBodyHtml = true;
 
