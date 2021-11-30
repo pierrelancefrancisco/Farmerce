@@ -25,6 +25,7 @@ namespace Farmerce.Models
         public string ContactNo { get; set; }
 
         [Required(ErrorMessage = "Required field.")]
+        [Display(Name = "Subject / Issue")]
         public string Subject { get; set; }
 
         [Required(ErrorMessage = "Required field.")]

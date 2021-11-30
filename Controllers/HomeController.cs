@@ -30,7 +30,7 @@ namespace Farmerce.Controllers
             con.ConnectionString= Farmerce.Properties.Resources.ConnectionString;
         }
 
-        [Authorize]
+        //[Authorize]
         public IActionResult Contact()
         {
             return View();
@@ -40,7 +40,7 @@ namespace Farmerce.Controllers
         {
             MailMessage mail = new MailMessage()
             {
-                From = new MailAddress("mvcapplicationtestrun@gmail.com", "The Administrator")
+                From = new MailAddress("mvcapplicationtestrun@gmail.com", "@supportfarmerce")
             };
             mail.To.Add(new MailAddress(record.Email));
 

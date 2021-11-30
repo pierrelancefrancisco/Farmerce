@@ -56,9 +56,8 @@
             </td>
             <td>
                 <a asp-action="Update" asp-route-id="@item.ProductID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
-                <a asp-controller="OrderForm" asp-action="OrderForm" asp-route-id="@item.ProductID">Click here to subscribe!</a>
+                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a> |
+                <a asp-controller="OrderForm" asp-action="OrderForm" asp-route-id="@item.ProductID">Buy</a>
             </td>
         </tr>
 }
