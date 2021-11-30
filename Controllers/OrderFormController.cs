@@ -8,6 +8,7 @@ using Farmerce.Models;
 using System.Net;
 using System.Net.Mail;
 using Farmerce.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Farmerce.Controllers
 {
@@ -18,6 +19,8 @@ namespace Farmerce.Controllers
         {
             _context = context;
         }
+
+        [Authorize]
         public IActionResult Index()
         {
             var list = _context.OrderForm.ToList();
@@ -27,27 +30,12 @@ namespace Farmerce.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        //public IActionResult Add(OrderForm record)
-        //{
-        //    int i = 1;
-        //    var order = new OrderForm();
-        //    order.itemBuy = record.itemBuy;
-        //    order.quantity = record.quantity;
-        //    order.fullName = record.fullName;
-        //    order.emailAddress = record.emailAddress;
-        //    order.phoneNumber = record.phoneNumber;
-        //    order.Type = (processed)i;
-        //    _context.OrderForm.Add(order);
-        //    _context.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
         public IActionResult OrderForm()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult OrderForm(OrderForm record)
+        public IActionResult OrderForm(OrderForm record, int? id)
         {
             MailMessage mail = new MailMessage()
             {
@@ -69,9 +57,11 @@ namespace Farmerce.Controllers
             };
             smtp.Send(mail);
             ViewBag.Message = "Submitted.";
+            var item = _context.Products.Where(p => p.ProductID == id).SingleOrDefault();
             int i = 1;
             var order = new OrderForm();
-            order.itemBuy = record.itemBuy;
+            order.itemBuy = item.ProductName;
+            //order.itemBuy = record.itemBuy; //og
             order.quantity = record.quantity;
             order.fullName = record.fullName;
             order.emailAddress = record.emailAddress;
@@ -79,7 +69,7 @@ namespace Farmerce.Controllers
             order.Type = (processed)i;
             _context.OrderForm.Add(order);
             _context.SaveChanges();
-            return View("Index");
+            return View();
         }
         public IActionResult Edit(int? id)
         {
@@ -99,6 +89,7 @@ namespace Farmerce.Controllers
         public IActionResult Edit(int? id, OrderForm record)
         {
             var order = _context.OrderForm.Where(i => i.Id == id).SingleOrDefault();
+            string a = "l";
             order.itemBuy = record.itemBuy;
             order.quantity = record.quantity;
             order.fullName = record.fullName;
