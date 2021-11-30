@@ -20,7 +20,6 @@ namespace Farmerce.Controllers
             _context = context;
         }
 
-        [Authorize]
         public IActionResult Index()
         {
             var list = _context.OrderForm.ToList();

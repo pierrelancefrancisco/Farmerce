@@ -18,7 +18,6 @@ namespace Farmerce.Controllers
             _context = context;
         }
 
-        [Authorize]
         public IActionResult Index()
         {
             var products = _context.Products.Include(p => p.Category).ToList();

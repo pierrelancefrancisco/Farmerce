@@ -3,63 +3,65 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<link href="~/css/StyleSheet.css" rel="stylesheet" />
 <h1>Index</h1>
-
-<p>
-    <a asp-action="Add">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductMeasurement)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StocksLeft)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CatID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductMeasurement)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StocksLeft)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagePath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CatID)
-            </td>
-            <td>
-                <a asp-action="Update" asp-route-id="@item.ProductID">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a> |
-                <a asp-controller="OrderForm" asp-action="OrderForm" asp-route-id="@item.ProductID">Buy</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<body class="BG">
+    <p>
+        <a asp-action="Add">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductMeasurement)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StocksLeft)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImagePath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CatID)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductMeasurement)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StocksLeft)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImagePath)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CatID)
+                    </td>
+                    <td>
+                        <a asp-action="Update" asp-route-id="@item.ProductID">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a> |
+                        <a asp-controller="OrderForm" asp-action="OrderForm" asp-route-id="@item.ProductID">Buy</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

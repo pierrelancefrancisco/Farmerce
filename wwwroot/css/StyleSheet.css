@@ -1,0 +1,26 @@
+﻿body {
+    background-image: url("../image/HomePage/HomePage.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.centered {
+
+}
+.BG {
+    background-image: url("../image/HomePage/dark.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.centered {
+    margin-left: 500px;
+    margin-top: 300px;
+    top: 20%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 23px;
+}
+#font{
+    color:white;
+}
