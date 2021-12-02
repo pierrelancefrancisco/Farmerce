@@ -10,7 +10,7 @@
     <p>
         <a asp-action="Add" style="color:white" class="btn btn-success">Create New</a>
     </p>
-    <table class="table">
+    <table class="table" id="Plugin">
         <thead>
             <tr style="color:white">
                 <th>
@@ -52,12 +52,25 @@
                     </td>
                     <td>
                         <a asp-action="Update" asp-route-id="@item.ProductID" style="color:white" class="btn btn-primary">Edit</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ProductID" style="color:white" 
-                           onclick='return confirm("Are you sure?");' class="btn btn-danger">Delete</a> |
-                        <a asp-controller="OrderForm" asp-action="OrderForm" asp-route-id="@item.ProductID" class="btn btn-success">Buy</a>
+                        <a asp-action="Delete" asp-route-id="@item.ProductID" style="color:white"
+                           onclick='return confirm("Are you sure?");' class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </body>
+
+
+@section scripts{
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/af-2.3.7/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#Plugin").DataTable();
+        }
+
+        )
+    </script>
+}

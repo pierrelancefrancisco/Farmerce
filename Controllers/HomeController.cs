@@ -30,7 +30,7 @@ namespace Farmerce.Controllers
             con.ConnectionString= Farmerce.Properties.Resources.ConnectionString;
         }
 
-        //[Authorize]
+        [Authorize]
         public IActionResult Contact()
         {
             return View();
@@ -60,11 +60,12 @@ namespace Farmerce.Controllers
             ViewBag.Message = "Inquiry sent.";
             return View();
         }
-
+        [Authorize]
         public IActionResult Index()
         {
             return View();
         }
+        [Authorize]
         public IActionResult PrintableReport()
         {
             FetchData();

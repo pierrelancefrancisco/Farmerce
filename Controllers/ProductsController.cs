@@ -26,7 +26,7 @@ namespace Farmerce.Controllers
             var list = _context.Products.Include(p => p.Category).ToList();
             return View(list);
         }
-
+        [Authorize]
         public IActionResult Add()
         {
             return View();
@@ -67,7 +67,7 @@ namespace Farmerce.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public IActionResult Update(int? id)
         {
             if (id == null)
@@ -83,7 +83,7 @@ namespace Farmerce.Controllers
             return View(products);
         }
 
-
+        [Authorize]
         [HttpPost]
         public IActionResult Update(int? id, Products record)
         {
@@ -111,7 +111,7 @@ namespace Farmerce.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public IActionResult Delete(int? id)
         {
             if (id == null)

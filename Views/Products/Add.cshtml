@@ -41,7 +41,7 @@
                     <span asp-validation-for="ImagePath" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="CatID" class="control-label"></label>
+                    <label asp-for="CatID" class="control-label">Category</label>
                     <select asp-for="CatID" class="form-control" asp-items="@(new SelectList(catList, "CatID", "CatName"))"></select>
                 </div>
                 <div class="form-group">

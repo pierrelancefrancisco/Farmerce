@@ -19,12 +19,15 @@ namespace Farmerce.Controllers
         {
             _context = context;
         }
-
+        
+        [Authorize]
         public IActionResult Index()
         {
             var list = _context.OrderForm.ToList();
             return View(list);
         }
+
+        [Authorize]
         public IActionResult Add()
         {
             return View();
@@ -33,6 +36,7 @@ namespace Farmerce.Controllers
         {
             return View();
         }
+        [Authorize]
         [HttpPost]
         public IActionResult OrderForm(OrderForm record, int? id)
         {
