@@ -61,7 +61,7 @@ namespace Farmerce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data Source=&quot;DESKTOP-767J2CG\MSSQLSERVER2019&quot;;Database=FarmerceDB;Integrated Security=true;MultipleActiveResultSets=true;.
+        ///   Looks up a localized string similar to Data Source=&quot;DESKTOP-6D9VHG9\MYSSQLSERVER&quot;;Database=FarmerceDB;Integrated Security=true;MultipleActiveResultSets=true;.
         /// </summary>
         internal static string ConnectionString {
             get {

@@ -1,46 +1,44 @@
 ﻿<!DOCTYPE html>
-<link href="~/css/StyleSheet.css" rel="stylesheet" />
+<link href="~/css/StyleSheet2.css" rel="stylesheet" />
+<link href="~/css/HomePage.css" rel="stylesheet" />
 <html>
 
 <head>
 </head>
 <body>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+    <div class="slidershow middle">
+
+        <div class="slides">
+            <input type="radio" name="r" id="r1" checked>
+            <input type="radio" name="r" id="r2">
+            <input type="radio" name="r" id="r3">
+            <input type="radio" name="r" id="r4">
+            <input type="radio" name="r" id="r5">
+            <div class="slide s1">
+                <img src="~/image/Produce/A.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="~/image/Produce/B.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="~/image/Produce/C.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="~/image/Produce/D.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="navigation">
+            <label for="r1" class="bar"></label>
+            <label for="r2" class="bar"></label>
+            <label for="r3" class="bar"></label>
+            <label for="r4" class="bar"></label>
+        </div>
+    </div>
 </body>
-<footer class="border-top footer text-muted" style="text-align:center">
+</html>
+<footer class="footer" style="text-align:center">
     <div class="container" style="color:white">
-        &copy; 2021 - MyInventory - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">AboutUs</a>
-        <br />
+        &copy; 2021 - Farmerce - <a asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
     </div>
 </footer>
-</html>

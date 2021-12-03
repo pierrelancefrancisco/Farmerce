@@ -1,0 +1,71 @@
+﻿body {
+    background-image: url("../image/HomePage/3.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.BG {
+    background-image: url("../image/HomePage/dark.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+.logo{
+    height: 200px;
+    margin-left: 340px
+}
+
+#font {
+    color: white;
+}
+.AUS {
+    text-align: center;
+    color: white;
+    margin-top:  1px;
+}
+.aboutus {
+    margin-top: 25px;
+    color: white;
+    font-size: 20px;
+    text-align:justify
+}
+.footer {
+    margin-top: 825px;
+}
+.JC {
+    margin-top: 50px;
+    margin-left: 100px;
+    height: 150px;
+    border: 3px solid;
+    border-color: white;
+}
+.bryce {
+    margin-top: 50px;
+    margin-left: 100px;
+    height: 150px;
+    border: 3px solid;
+    border-color: white;
+}
+.jan {
+    margin-top: 50px;
+    margin-left: 120px;
+    height: 150px;
+    border: 3px solid;
+    border-color: white;
+}
+.pier {
+    margin-top: 50px;
+    margin-left: 150px;
+    height: 150px;
+    border: 3px solid;
+    border-color: white;
+}
+.Devs {
+    text-align: center;
+    color: white;
+    margin-top: .05px
+}
+
