@@ -16,19 +16,19 @@ namespace Farmerce.Controllers
 {
     public class HomeController : Controller
     {
-        SqlCommand com = new SqlCommand();
-        SqlDataReader dr;
-        SqlConnection con = new SqlConnection();
+        //SqlCommand com = new SqlCommand();
+        //SqlDataReader dr;
+        //SqlConnection con = new SqlConnection();
 
         List<ProductSummary> products = new List<ProductSummary>();
 
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-            con.ConnectionString= Farmerce.Properties.Resources.ConnectionString;
-        }
+        ////public HomeController(ILogger<HomeController> logger)
+        ////{
+        ////    _logger = logger;
+        ////    con.ConnectionString= Farmerce.Properties.Resources.ConnectionString;
+        ////}
 
         [Authorize]
         public IActionResult Contact()
@@ -65,16 +65,16 @@ namespace Farmerce.Controllers
         {
             return View();
         }
-        [Authorize]
-        public IActionResult PrintableReport()
-        {
-            FetchData();
-            return View(products);
-        }
+        //[Authorize]
+        //public IActionResult PrintableReport()
+        //{
+        //    FetchData();
+        //    return View(products);
+        //}
         public IActionResult HomePage()
         {
-            FetchData();
-            return View(products);
+            //FetchData();
+            return View();
         }
         public IActionResult AboutUs()
         {
@@ -85,44 +85,44 @@ namespace Farmerce.Controllers
             return View();
         }
 
-        private void FetchData()
-        {
-            if (products.Count > 0)
-            {
-                products.Clear();
-            }
+        ////private void FetchData()
+        ////{
+        ////    if (products.Count > 0)
+        ////    {
+        ////        products.Clear();
+        ////    }
 
-            try
-            {
-                con.Open();
-                com.Connection = con;
-                com.CommandText = "SELECT TOP (1000) [ProductID],[ProductName],[ProductPrice],[ProductMeasurement],[StocksLeft] FROM [FarmerceDB].[dbo].[Products]";
+        ////    try
+        ////    {
+        ////        con.Open();
+        ////        com.Connection = con;
+        ////        com.CommandText = "SELECT TOP (1000) [ProductID],[ProductName],[ProductPrice],[ProductMeasurement],[StocksLeft] FROM [FarmerceDB].[dbo].[Products]";
 
-                dr = com.ExecuteReader();
-                while (dr.Read())
-                {
-                    products.Add(new ProductSummary() {ProductID = dr["ProductID"].ToString()
-                    ,ProductName = dr["ProductName"].ToString()
-                    ,ProductPrice = dr["ProductPrice"].ToString()
-                    ,ProductMeasurement = dr["ProductMeasurement"].ToString()
-                    ,StocksLeft = dr["StocksLeft"].ToString()
-                    //,CatId = dr["CatId"].ToString()
-                    //,ImagePath = dr["ImagePath"].ToString()
+        ////        dr = com.ExecuteReader();
+        ////        while (dr.Read())
+        ////        {
+        ////            products.Add(new ProductSummary() {ProductID = dr["ProductID"].ToString()
+        ////            ,ProductName = dr["ProductName"].ToString()
+        ////            ,ProductPrice = dr["ProductPrice"].ToString()
+        ////            ,ProductMeasurement = dr["ProductMeasurement"].ToString()
+        ////            ,StocksLeft = dr["StocksLeft"].ToString()
+        ////            //,CatId = dr["CatId"].ToString()
+        ////            //,ImagePath = dr["ImagePath"].ToString()
 
-                    });
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        ////            });
+        ////        }
+        ////        con.Close();
+        ////    }
+        ////    catch (Exception ex)
+        ////    {
+        ////        throw ex;
+        ////    }
+        ////}
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
 }
